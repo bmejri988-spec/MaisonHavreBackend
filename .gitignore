@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.git-local-backup/
+.env
+*.sqlite3
+
+# Node
+node_modules/
+dist/
+
+# Tooling
+.vscode/
+.DS_Store
+
+*.mp4
+
+# Local migration artifacts
+modeles-contact-sheet.jpg
+terrains-contact-sheet.jpg
+
+images/
+
+*jpg
+*png
+*jpeg

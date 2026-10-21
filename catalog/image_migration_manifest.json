@@ -1,0 +1,55 @@
+{
+  "bucket": "images",
+  "groups": {
+    "models": {
+      "horizon": [
+        "WhatsApp Image 2026-10-20 at 16.12.16 (3).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.16 (4).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.17.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.16.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.16 (1).jpeg"
+      ],
+      "atlas": [
+        "WhatsApp Image 2026-10-20 at 16.12.16 (2).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.17 (1).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.14.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.17 (4).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.15 (3).jpeg"
+      ],
+      "terra": [
+        "WhatsApp Image 2026-10-20 at 16.12.15.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.17 (2).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.17 (3).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.15 (1).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.15 (2).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.12.18.jpeg"
+      ]
+    },
+    "terrains": {
+      "tabarka": [
+        "WhatsApp Image 2026-10-20 at 16.11.12.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.13 (2).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.13.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.13 (4).jpeg"
+      ],
+      "ain-draham": [
+        "WhatsApp Image 2026-10-20 at 16.11.13 (3).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.14 (4).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.14.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.15 (3).jpeg"
+      ],
+      "cap-bon": [
+        "WhatsApp Image 2026-10-20 at 16.11.15.jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.15 (1).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.15 (2).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.16.jpeg"
+      ],
+      "zaghouan": [
+        "WhatsApp Image 2026-10-20 at 16.11.13 (1).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.14 (1).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.14 (3).jpeg",
+        "WhatsApp Image 2026-10-20 at 16.11.14 (2).jpeg"
+      ]
+    }
+  }
+}
