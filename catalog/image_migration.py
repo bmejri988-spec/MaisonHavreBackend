@@ -6,7 +6,7 @@ import mimetypes
 import os
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote
+from urllib.parse import parse_qs, quote, urlsplit
 from urllib.request import Request, urlopen
 
 from django.conf import settings
@@ -162,8 +162,15 @@ def signed_url(reference, expires_in=3600):
     if not signed_path:
         raise RuntimeError(f'Supabase did not return a signed URL for {object_path}')
     if signed_path.startswith('http'):
-        return signed_path
-    return f'{base_url}/storage/v1{signed_path}'
+        signed_url_value = signed_path
+    else:
+        signed_url_value = f'{base_url}/storage/v1{signed_path}'
+
+    query = parse_qs(urlsplit(signed_url_value).query)
+    if not query.get('token', [None])[0]:
+        raise RuntimeError(f'Supabase returned a signed URL without a token for {object_path}')
+
+    return signed_url_value
 
 
 def resolve_image_url(value):
