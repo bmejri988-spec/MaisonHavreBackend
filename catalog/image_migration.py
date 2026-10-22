@@ -123,54 +123,23 @@ class StorageMigration:
             raise
 
 
+
+
 def signed_url(reference, expires_in=3600):
     if not reference.startswith(STORAGE_PREFIX):
         return reference
+
     bucket, object_path = reference[len(STORAGE_PREFIX):].split('/', 1)
+
     base_url = os.getenv('SUPABASE_URL', '').rstrip('/')
-    service_role_key = os.getenv('SUPABASE_SERVICE_ROLE_KEY', '')
-    if not service_role_key:
-        service_role_key = os.getenv('SUPABASE_SECRET_KEY', '')
-    if not base_url or not service_role_key:
+    if not base_url:
         return reference
 
-    payload = json.dumps({'expiresIn': expires_in}).encode('utf-8')
-    url = (
-        f'{base_url}/storage/v1/object/sign/{quote(bucket)}/'
+    return (
+        f'{base_url}/storage/v1/object/public/'
+        f'{quote(bucket, safe="")}/'
         f'{quote(object_path, safe="/")}'
     )
-    request = Request(
-        url,
-        data=payload,
-        headers={
-            'Authorization': f'Bearer {service_role_key}',
-            'apikey': service_role_key,
-            'Content-Type': 'application/json',
-        },
-        method='POST',
-    )
-    try:
-        with urlopen(request, timeout=15) as response:
-            result = json.loads(response.read().decode('utf-8'))
-    except HTTPError as error:
-        details = error.read().decode('utf-8', errors='replace').strip()
-        raise RuntimeError(
-            f'Supabase signed URL request returned HTTP {error.code}'
-            + (f': {details}' if details else '')
-        ) from error
-    signed_path = result.get('signedURL') or result.get('signedUrl')
-    if not signed_path:
-        raise RuntimeError(f'Supabase did not return a signed URL for {object_path}')
-    if signed_path.startswith('http'):
-        signed_url_value = signed_path
-    else:
-        signed_url_value = f'{base_url}/storage/v1{signed_path}'
-
-    query = parse_qs(urlsplit(signed_url_value).query)
-    if not query.get('token', [None])[0]:
-        raise RuntimeError(f'Supabase returned a signed URL without a token for {object_path}')
-
-    return signed_url_value
 
 
 def resolve_image_url(value):
