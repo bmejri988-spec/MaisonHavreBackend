@@ -178,11 +178,14 @@ MAILERS = {
     },
 }
 
-CORS_ALLOWED_ORIGINS = [
+configured_cors_origins = {
     origin.strip()
-    for origin in os.getenv(
-        'CORS_ALLOWED_ORIGINS',
-        'http://localhost:5173,http://127.0.0.1:5173,https://aurea-egtn6vjdy-bmejri988-3018s-projects.vercel.app',
-    ).split(',')
+    for origin in os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
     if origin.strip()
-]
+}
+CORS_ALLOWED_ORIGINS = sorted(configured_cors_origins | {
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:5174',
+})
