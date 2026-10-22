@@ -142,6 +142,7 @@ def signed_url(reference, expires_in=3600):
     )
 
 
+
 def resolve_image_url(value):
     return signed_url(value)
 
