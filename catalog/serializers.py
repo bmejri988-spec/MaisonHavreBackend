@@ -8,7 +8,8 @@ class StorageImageMixin:
     def to_representation(self, instance):
         data = super().to_representation(instance)
         data['image'] = resolve_image_url(data['image'])
-        data['gallery'] = resolve_gallery(data['gallery'])
+        if 'gallery' in data:
+            data['gallery'] = resolve_gallery(data['gallery'])
         return data
 
 
@@ -35,7 +36,7 @@ class TerrainSerializer(StorageImageMixin, serializers.ModelSerializer):
         fields = ('id', 'name', 'region', 'country', 'description', 'surfaceArea', 'surfaceUnit', 'basePrice', 'image', 'gallery', 'features')
 
 
-class OptionSerializer(serializers.ModelSerializer):
+class OptionSerializer(StorageImageMixin, serializers.ModelSerializer):
     id = serializers.CharField(source='slug', read_only=True)
     shortDescription = serializers.CharField(source='short_description', read_only=True)
 
